@@ -9,7 +9,6 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NewPassword from "./pages/NewPassword";
-
 import { AuthProvider } from "./context/AuthProvider";
 import { PatientsProvider } from "./context/PatientsProvider";
 
