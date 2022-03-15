@@ -1,8 +1,15 @@
 import React, { useState, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { bindActionCreators } from "redux";
 import Alert from "../components/Alert";
-import usePatients from "../hooks/usePatients";
+import { actionCreators } from "../redux";
 export default function Form() {
-  const { createPatient, patient } = usePatients();
+  // const { createPatient, patient } = usePatients();
+
+  const patient = useSelector(state=>state.patients).patient;
+  const dispatch = useDispatch();
+  const {createPatient} = bindActionCreators(actionCreators, dispatch);
+
   const [states, setStates] = useState({});
   const [message, setAlert] = useState({
     msg: "Please, fill all fields!",
@@ -165,7 +172,7 @@ export default function Form() {
         </div>
         <div className="mb-4">
           <label
-            htmlFor="pet_email"
+            htmlFor="pet_tel"
             className="text-gray-700 uppercase font-bold"
           >
             Telephone number

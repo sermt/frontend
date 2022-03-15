@@ -9,32 +9,36 @@ import ForgotPassword from "./pages/ForgotPassword";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
 import NewPassword from "./pages/NewPassword";
-import { AuthProvider } from "./context/AuthProvider";
-import { PatientsProvider } from "./context/PatientsProvider";
+
+import { Provider } from 'react-redux'
+import store from './redux/store'
+
 function App() {
+  const showStore = ()=>{
+    // console.log(store.getState())
+  }
+  store.subscribe(showStore)
   return (
-    <BrowserRouter>
-      <AuthProvider>
-        <PatientsProvider>
-        <Routes>
-          {/* Public routes */}
-          <Route path="/" element={<AuthLayout />}>
-            <Route index element={<Login />} />
-            <Route path="register" element={<Register />} />
-            <Route path="forget-Password" element={<ForgotPassword />} />
-            <Route path="forget-Password/:token" element={<NewPassword />} />
-            <Route path="confirm/:id" element={<ConfirmAccount />} />
-          </Route>
-          {/* Private routes */}
-          <Route path="/admin" element={<AdminLayout />}>
-            <Route index element={<AdminPage />} />
-            <Route path="profile" element={<EditProfile />} />
-            <Route path="change-password" element={<ChangePassword />} />
-          </Route>
-        </Routes>
-        </PatientsProvider>
-      </AuthProvider>
-    </BrowserRouter>
+    <Provider store={store}>
+      <BrowserRouter>
+          <Routes>
+            {/* Public routes */}
+            <Route path="/" element={<AuthLayout />}>
+              <Route index element={<Login />} />
+              <Route path="register" element={<Register />} />
+              <Route path="forget-Password" element={<ForgotPassword />} />
+              <Route path="forget-Password/:token" element={<NewPassword />} />
+              <Route path="confirm/:id" element={<ConfirmAccount />} />
+            </Route>
+            {/* Private routes */}
+            <Route path="/admin" element={<AdminLayout />}>
+              <Route index element={<AdminPage />} />
+              <Route path="profile" element={<EditProfile />} />
+              <Route path="change-password" element={<ChangePassword />} />
+            </Route>
+          </Routes>
+      </BrowserRouter>
+    </Provider>
   );
 }
 export default App;

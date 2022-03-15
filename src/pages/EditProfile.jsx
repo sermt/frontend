@@ -1,17 +1,30 @@
 import React, { useEffect, useState } from "react";
 import AdminNav from "../components/AdminNav";
-import useAuth from "../hooks/useAuth";
 import Alert from "../components/Alert";
+import { useDispatch, useSelector } from "react-redux";
+import { actionCreators } from "../redux";
+import { bindActionCreators } from "redux";
 
 export default function EditProfile() {
-  const { auth, updateProfile } = useAuth();
+
+  const auth = useSelector(state=>state.auth)
+  const dispatch = useDispatch()
+  const { getUserInfo, editProfile } = bindActionCreators(actionCreators, dispatch)
+
   const [message, setAlert] = useState({
     msg: "Be careful when changing data",
     error: false,
   });
-  const [profile, setProfile] = useState(auth);
+
+  const [profile, setProfile] = useState({});
+
   useEffect(() => {
-    setProfile(auth);
+    getUserInfo()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  useEffect(() => {
+    setProfile(auth.profile)
   }, [auth]);
 
   const handleSubmit = async (e) => {
@@ -21,7 +34,7 @@ export default function EditProfile() {
       setAlert({ msg: "Name and email are required!", error: true });
       return;
     }
-    const result = await updateProfile(profile);
+    const result = await editProfile(profile);
     setAlert(result);
   };
 

@@ -1,11 +1,16 @@
 import React, { useState } from "react";
 import Alert from "../components/Alert";
-import clientAxios from "../config/Axios";
-import useAuth from "../hooks/useAuth";
 import { Link, useNavigate } from "react-router-dom";
+import { useDispatch } from 'react-redux'
+import { bindActionCreators } from 'redux'
+import { actionCreators } from '../redux'
+
 export default function Login() {
+  const dispatch = useDispatch();
+  const { userLogin } = bindActionCreators(actionCreators, dispatch)
+
+  // console.log(stateAuth)
   const navigate = useNavigate();
-  const {setAuth}=useAuth();
   const [message, setAlert] = useState({
     msg: "Please fill all fields",
     error: false,
@@ -28,13 +33,11 @@ export default function Login() {
         return;
       }
 
-      const { data } = await clientAxios.post("/veterinaries/login", {
-        password,
-        email,
-      });
+      const data = await userLogin(password, email)
       localStorage.setItem("my-token", data.token);
-      setAuth(data);
+      // setAuth(data);
       navigate("/admin");
+
     } catch (error) {
       setAlert({ msg: error.response.data.msg, error: true });
       return;

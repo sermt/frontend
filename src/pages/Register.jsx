@@ -2,7 +2,15 @@ import React, { useState } from "react";
 import clientAxios from "../config/Axios";
 import Alert from "../components/Alert";
 import { Link } from "react-router-dom";
+import { useDispatch, useSelector } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from '../redux'
+
 export default function Register() {
+  const authState = useSelector(state=>state.auth)
+  const dispatch = useDispatch()
+  const {userRegistration} = bindActionCreators(actionCreators, dispatch)
+
   const [states, setStates] = useState({});
   const [message, setMessage] = useState({});
   const validateEmail = (email) => {
@@ -56,12 +64,12 @@ export default function Register() {
     setMessage({});
     //create user
     try {
-      const url = "veterinaries";
-      await clientAxios.post(url, { name, email, password });
+      await userRegistration(name, email, password);
       setMessage({
         msg: "User has been created, please check your email.",
         error: false,
       });
+      setStates({})
     } catch (error) {
       setMessage({ msg: error.response.data.msg, error: true });
       return;
@@ -149,6 +157,7 @@ export default function Register() {
             />
           </div>
           <input
+            disabled={authState.isLoadingRegistration}
             type="submit"
             value="Register"
             className="bg-indigo-200 w-full md:w-auto p-3 rounded-xl uppercase font-bold mt-5 hover:cursor-pointer hover:bg-indigo-800"

@@ -1,8 +1,26 @@
-import React from "react";
-import usePatients from "../hooks/usePatients";
+import React, { useEffect, useState } from "react";
 import Patient from "../components/Patient";
+import { useDispatch, useSelector } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../redux";
+
 export default function Patients() {
-  const { patients } = usePatients();
+  // const { patients } = usePatients();
+  const statePatient =  useSelector(state=>state);
+  
+  const [patients, setPatients ] =useState([]);
+  const dispatch = useDispatch()
+  const {getPatients} = bindActionCreators(actionCreators, dispatch)
+
+  useEffect(()=>{
+    getPatients()
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  },[])
+  
+  useEffect(()=>{
+    setPatients(statePatient.patients.data)
+  },[statePatient])
+
   return (
     <>
       {patients?.length ? (

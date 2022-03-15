@@ -1,9 +1,14 @@
 import React, { useState } from "react";
 import AdminNav from "../components/AdminNav";
-import useAuth from "../hooks/useAuth";
 import Alert from "../components/Alert";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../redux";
 export default function ChangePassword() {
-  const { updatePassword } = useAuth();
+
+  const dispatch = useDispatch();
+  const { updatePassword } = bindActionCreators(actionCreators, dispatch)
+
   const [passwords, setPasswords] = useState({ oldPwd: "", newPwd: "" });
   const [message, setAlert] = useState({
     msg: "Password must be at least 8 characters",

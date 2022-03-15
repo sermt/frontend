@@ -1,8 +1,12 @@
 import React from "react";
-import useAuth from "../hooks/useAuth";
 import { Link } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { bindActionCreators } from "redux";
+import { actionCreators } from "../redux";
 export default function Header() {
-  const {logOut}=useAuth();
+  const dispatch = useDispatch();
+  const {logout} =bindActionCreators(actionCreators, dispatch)
+
   return (
     <header className="py-10 bg-indigo-600">
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between">
@@ -18,7 +22,7 @@ export default function Header() {
           <button
             type="button"
             className="text-white  text-sm font-black uppercase hover:cursor-pointer"
-            onClick={logOut}
+            onClick={logout}
           >
             Log out
           </button>
