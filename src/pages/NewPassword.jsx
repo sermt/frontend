@@ -10,6 +10,7 @@ export default function NewPassword() {
     event.preventDefault();
     const password = document.getElementById("password").value;
     try {
+      
       if (password.trim().length < 8) {
         setAlert({
           msg: "Password must have at least 8 characters",
@@ -32,6 +33,7 @@ export default function NewPassword() {
   };
  
   useEffect(() => {
+    const { token } = params;
     const confirmToken = async () => {
       try {
         await clientAxios.get(`veterinaries/forget-password/${token}`);

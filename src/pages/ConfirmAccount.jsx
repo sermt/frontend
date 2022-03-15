@@ -10,6 +10,7 @@ export default function ConfirmAccount() {
   useEffect(() => {
     const confirmAccount = async () => {
       try {
+        const { id } = params;
         const url = `veterinaries/confirm/${id}`;
         await clientAxios.get(url);
         setAlert({ msg: "User has successfully confirmed", error: false });
