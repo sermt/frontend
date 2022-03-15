@@ -38,7 +38,7 @@ export default function NewPassword() {
       }
     };
     confirmToken();
-  }, []);
+  }, [token]);
   return (
     <>
       <div>
