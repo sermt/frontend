@@ -6,16 +6,17 @@ export default function ConfirmAccount() {
   const params = useParams();
   const { id } = params;
   const [message, setAlert] = useState("");
-  const confirmAccount = async () => {
-    try {
-      const url = `veterinaries/confirm/${id}`;
-      await clientAxios.get(url);
-      setAlert({ msg: "User has successfully confirmed", error: false });
-    } catch (error) {
-      setAlert({ msg: error.response.data.msg, error: true });
-    }
-  };
+ 
   useEffect(() => {
+    const confirmAccount = async () => {
+      try {
+        const url = `veterinaries/confirm/${id}`;
+        await clientAxios.get(url);
+        setAlert({ msg: "User has successfully confirmed", error: false });
+      } catch (error) {
+        setAlert({ msg: error.response.data.msg, error: true });
+      }
+    };
     confirmAccount();
   }, []);
   return (

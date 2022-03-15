@@ -30,15 +30,16 @@ export default function NewPassword() {
       return;
     }
   };
-  const confirmToken = async () => {
-    try {
-      await clientAxios.get(`veterinaries/forget-password/${token}`);
-      setAlert({ msg: "Create your new password", error: false });
-    } catch (error) {
-      setAlert({ msg: error.response.data.msg, error: true });
-    }
-  };
+ 
   useEffect(() => {
+    const confirmToken = async () => {
+      try {
+        await clientAxios.get(`veterinaries/forget-password/${token}`);
+        setAlert({ msg: "Create your new password", error: false });
+      } catch (error) {
+        setAlert({ msg: error.response.data.msg, error: true });
+      }
+    };
     confirmToken();
   }, []);
   return (
