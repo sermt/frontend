@@ -10,7 +10,6 @@ export default function NewPassword() {
     event.preventDefault();
     const password = document.getElementById("password").value;
     try {
-      
       if (password.trim().length < 8) {
         setAlert({
           msg: "Password must have at least 8 characters",
@@ -18,22 +17,18 @@ export default function NewPassword() {
         });
         return;
       }
-      const { data } = await clientAxios.post(
-        `veterinaries/forget-password/${token}`,
-        {
-          password,
-        }
-      );
+      await clientAxios.post(`veterinaries/forget-password/${token}`, {
+        password,
+      });
 
-      setAlert({ msg: data.msg, error: false });
+      setAlert({ msg: "New password was successfully changed", error: false });
     } catch (error) {
       setAlert({ msg: error.response.data.msg, error: true });
       return;
     }
   };
- 
+
   useEffect(() => {
-    const { token } = params;
     const confirmToken = async () => {
       try {
         await clientAxios.get(`veterinaries/forget-password/${token}`);

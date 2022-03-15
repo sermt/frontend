@@ -4,23 +4,23 @@ import clientAxios from "../config/Axios";
 import Alert from "../components/Alert";
 export default function ConfirmAccount() {
   const params = useParams();
-  
+  const { id } = params;
   const [message, setAlert] = useState("");
  
   useEffect(() => {
     const confirmAccount = async () => {
       try {
         
-        const { id } = params;
+        
         const url = `veterinaries/confirm/${id}`;
-        await clientAxios.get(url);
+        await clientAxios(url);
         setAlert({ msg: "User has successfully confirmed", error: false });
       } catch (error) {
         setAlert({ msg: error.response.data.msg, error: true });
       }
     };
     confirmAccount();
-  }, []);
+  }, [id]);
   return (
     <>
       <div>
