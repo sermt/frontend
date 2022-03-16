@@ -32,9 +32,9 @@ export default function Login() {
       }
 
       const data = await userLogin(password, email)
-      if(!data.token)  throw new Error("Invalid user or password!")
+      if(!data.token) {setAlert({ msg: error, error: true });
+      return;}
       navigate("/admin");
-
     } catch (error) {
       setAlert({ msg: error, error: true });
       return;
