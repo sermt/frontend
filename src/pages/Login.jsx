@@ -33,7 +33,7 @@ export default function Login() {
 
       const data = await userLogin(password, email)
       
-      console.log(data)
+      //validate if data is valid
       if(!data.token) {setAlert({ msg: data.msg.response.data.msg, error: true });
       return;}
       navigate("/admin");
