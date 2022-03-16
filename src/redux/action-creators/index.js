@@ -53,9 +53,11 @@ export const userLogin = (password, email) => async (dispatch) => {
     password,
     email,
   });
-  console.log(data)
+  if(!data.token) return data;
   dispatch(setUserData(data));
   dispatch(toggleLoadingUser(false));
+  localStorage.setItem("my-token", data.token);
+      
   return data;
   } catch (error) {
     return {

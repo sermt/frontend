@@ -33,7 +33,6 @@ export default function Login() {
 
       const data = await userLogin(password, email)
       if(!data.token)  throw new Error("Invalid user or password!")
-      localStorage.setItem("my-token", data.token);
       navigate("/admin");
 
     } catch (error) {
