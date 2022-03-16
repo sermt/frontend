@@ -32,6 +32,7 @@ export default function Login() {
       }
 
       const data = await userLogin(password, email)
+      console.log(123121312312)
       console.log(data)
       if(!data.token) {setAlert({ msg: data, error: true });
       return;}
