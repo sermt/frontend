@@ -6,10 +6,12 @@ import { actionCreators } from "../redux";
 import { bindActionCreators } from "redux";
 
 export default function EditProfile() {
-
-  const auth = useSelector(state=>state.auth)
-  const dispatch = useDispatch()
-  const { getUserInfo, editProfile } = bindActionCreators(actionCreators, dispatch)
+  const auth = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const { getUserInfo, editProfile } = bindActionCreators(
+    actionCreators,
+    dispatch
+  );
 
   const [message, setAlert] = useState({
     msg: "Be careful when changing data",
@@ -19,12 +21,12 @@ export default function EditProfile() {
   const [profile, setProfile] = useState({});
 
   useEffect(() => {
-    getUserInfo()
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    getUserInfo();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   useEffect(() => {
-    setProfile(auth.profile)
+    setProfile(auth.profile);
   }, [auth]);
 
   const handleSubmit = async (e) => {
@@ -118,6 +120,7 @@ export default function EditProfile() {
             </div>
             <input
               type="submit"
+              value="Save changes"
               className="bg-indigo-500  px-10 py-3 font-bold hover:bg-indigo-700 hover:cursor-pointer text-white rounded-lg uppercase
             w-full mt-5"
             />

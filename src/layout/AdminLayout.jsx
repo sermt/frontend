@@ -1,18 +1,20 @@
 import { useEffect } from "react";
+import { useNavigate } from 'react-router-dom'
 import { useSelector } from "react-redux";
 import { Outlet } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 
 export default function AdminLayout() {
-  // const { auth, loading } = useAuth();
-  const auth = useSelector(state=>state.auth)
+  const navigate = useNavigate()
+  const auth = useSelector((state) => state.auth);
   useEffect(() => {
     const token = localStorage.getItem("my-token");
     if (!token) {
-      window.location.href="/"
+      navigate('/');
     }
-}, [])
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
   if (auth.isLoading) return "Loading...";
   return (
     <>
