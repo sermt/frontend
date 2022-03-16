@@ -48,7 +48,7 @@ export default function Register() {
         } //validate email
         if (!validateEmail(email)) {
           setMessage({
-            msg: "asd",
+            msg: "Email is not valid",
             error: true,
           });
           return;
@@ -75,6 +75,7 @@ export default function Register() {
       return;
     }
   };
+  //handle states
   const changeState = (event) => {
     switch (event.target.id) {
       case "name":
@@ -125,7 +126,7 @@ export default function Register() {
               className="border w-full p-3 bg-gray-50 rounded-xl"
               value={states.email || ""}
               name="email"
-              placeholder="Example@example.comsss"
+              placeholder="Example@example.com"
             />
           </div>
           <div className="my-5">
