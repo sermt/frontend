@@ -32,7 +32,7 @@ export default function Login() {
       }
 
       const data = await userLogin(password, email)
-      if(!data.token) {setAlert({ msg: error, error: true });
+      if(!data.token) {setAlert({ msg: data, error: true });
       return;}
       navigate("/admin");
     } catch (error) {
