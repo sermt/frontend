@@ -53,7 +53,8 @@ export const userLogin = (password, email) => async (dispatch) => {
     password,
     email,
   });
-  await dispatch(setUserData(data));
+  console.log(data)
+  dispatch(setUserData(data));
   dispatch(toggleLoadingUser(false));
   return data;
   } catch (error) {

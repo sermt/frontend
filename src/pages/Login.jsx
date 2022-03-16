@@ -8,8 +8,6 @@ import { actionCreators } from '../redux'
 export default function Login() {
   const dispatch = useDispatch();
   const { userLogin } = bindActionCreators(actionCreators, dispatch)
-
-  // console.log(stateAuth)
   const navigate = useNavigate();
   const [message, setAlert] = useState({
     msg: "Please fill all fields",
@@ -34,12 +32,12 @@ export default function Login() {
       }
 
       const data = await userLogin(password, email)
+      if(!data.token)  throw new Error("Invalid user or password!")
       localStorage.setItem("my-token", data.token);
-      // setAuth(data);
       navigate("/admin");
 
     } catch (error) {
-      setAlert({ msg: error.response.data.msg, error: true });
+      setAlert({ msg: error, error: true });
       return;
     }
   };
