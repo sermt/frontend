@@ -10,7 +10,7 @@ export default function AdminLayout() {
   const auth = useSelector((state) => state.auth);
   useEffect(() => {
     const token = localStorage.getItem("my-token");
-    if (!token || Object.keys(auth).length >=0) {
+    if (!token || !Object.keys(auth).length >0) {
       navigate('/');
     }
 
