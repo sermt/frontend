@@ -170,13 +170,13 @@ export default function Register() {
         </form>
         <nav className="mt-10 lg-flex lg:justify-between">
           <Link
-            className="block text-center my-5 text-gray-500 hover:cursor-pointer hover:text-blue-800 "
+            className="block text-center my-5 text-indigo-600 hover:cursor-pointer hover:indigo-blue-800 "
             to="/"
           >
             Already registered?
           </Link>
           <Link
-            className="block text-center my-5 text-gray-500 hover:cursor-pointer hover:text-blue-800"
+            className="block text-center my-5 text-indigo-600 hover:cursor-pointer hover:indigo-blue-800"
             to="/forget-Password"
           >
             Forgot Password? 
