@@ -15,7 +15,6 @@ import store from './redux/store'
 
 function App() {
   const showStore = ()=>{
-    // console.log(store.getState())
   }
   store.subscribe(showStore)
   return (
