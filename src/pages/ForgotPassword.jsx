@@ -4,7 +4,7 @@ import Alert from "../components/Alert";
 import axiosClient from "../config/Axios";
 export default function ForgotPassword() {
   const [states, setStates] = useState({});
-  const [message, setAlert] = useState("");
+  const [message, setAlert] = useState("Please, fill all the fields");
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { name, email } = states;
@@ -51,7 +51,7 @@ export default function ForgotPassword() {
         </h1>
       </div>
       <div className="mt-20 md:mt-5 shadow-lg px-5 rounded-xl bg-white">
-        {message && <Alert alert={message} />}
+         <Alert alert={message} />
         <form onSubmit={handleSubmit}>
           <div className="my-5">
             <label className="text-black block text-xl font-bold">Name</label>
