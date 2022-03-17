@@ -7,7 +7,6 @@ export default function ForgotPassword() {
   const [message, setAlert] = useState("");
   const handleSubmit = async (event) => {
     event.preventDefault();
-
     const { name, email } = states;
     try {
       if (email.trim().length > 0 && name.trim().length > 0) {
@@ -41,7 +40,7 @@ export default function ForgotPassword() {
         setStates((prev) => ({ ...prev, email: event.target.value }));
         break;
       default:
-        throw Error("I'm Groot");
+        throw Error("Something went wrong");
     }
   };
   return (
@@ -64,6 +63,7 @@ export default function ForgotPassword() {
               value={states.name || ""}
               onChange={changeState}
               placeholder="Name"
+              required
             />
           </div>
           <div className="my-5">
@@ -75,7 +75,8 @@ export default function ForgotPassword() {
               value={states.email || ""}
               className="border w-full p-3 bg-gray-50 rounded-xl"
               name="email"
-              placeholder="Example@example.com"
+              placeholder="Example@myexample.com"
+              required
             />
           </div>
           <input
@@ -86,10 +87,10 @@ export default function ForgotPassword() {
         </form>
         <nav className="mt-10 lg-flex lg:justify-between">
           <Link
-            className="block text-center my-5 text-gray-500 hover:cursor-pointer hover:text-blue-800 "
+            className="block font-bold text-center my-5 text-indigo-500 hover:cursor-pointer hover:indigo-blue-900"
             to="/"
           >
-            Already registered? Sign in
+            Already registered?
           </Link>
         </nav>
       </div>

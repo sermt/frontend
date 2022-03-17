@@ -30,10 +30,10 @@ export default function ConfirmAccount() {
         {message && <Alert alert={message} />}
         {message && (
           <Link
-            className="block text-center my-5 text-gray-500 hover:cursor-pointer hover:text-blue-900 "
+            className="block font-bold text-center my-5 text-indigo-500 hover:cursor-pointer hover:indigo-blue-900"
             to="/"
           >
-            Already registered? Sign in
+            Already registered?
           </Link>
         )}
       </div>

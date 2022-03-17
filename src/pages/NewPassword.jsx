@@ -57,6 +57,7 @@ export default function NewPassword() {
               className="border w-full p-3 bg-gray-50 rounded-xl"
               name="password"
               placeholder="***********"
+              required
             />
           </div>
           <input
@@ -67,10 +68,10 @@ export default function NewPassword() {
         </form>
         <nav className="mt-10 lg-flex lg:justify-between">
           <Link
-            className="block text-center my-5 text-gray-500 hover:cursor-pointer hover:text-blue-800 "
+            className="block font-bold text-center my-5 text-indigo-500 hover:cursor-pointer hover:indigo-blue-900"
             to="/"
           >
-            Already registered? Sign in
+            Already registered?
           </Link>
         </nav>
       </div>

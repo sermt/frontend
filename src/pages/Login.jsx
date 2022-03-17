@@ -61,7 +61,8 @@ export default function Login() {
               type="email"
               className="border w-full p-3 bg-gray-50 rounded-xl"
               name="email"
-              placeholder="Example@example.com"
+              placeholder="Example@myexample.com"
+              required
             />
           </div>
           <div className="my-5">
@@ -74,6 +75,7 @@ export default function Login() {
               className="border w-full p-3 bg-gray-50 rounded-xl"
               name="password"
               placeholder="********"
+              required
             />
           </div>
           <input
@@ -87,13 +89,13 @@ export default function Login() {
             className="block text-center my-5 text-gray-500 hover:cursor-pointer hover:text-blue-800 "
             to="/register"
           >
-            Don’t have an account? Register here
+           Don't have an account? Register here!
           </Link>
           <Link
-            className="block text-center my-5 text-gray-500 hover:cursor-pointer hover:text-blue-800"
+            className="block font-bold text-center my-5 text-indigo-500 hover:cursor-pointer hover:indigo-blue-900"
             to="/forget-Password"
           >
-            Forgot Password? Click here
+            Forgot Password? 
           </Link>
         </nav>
       </div>
