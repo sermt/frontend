@@ -8,6 +8,7 @@ export default function ForgotPassword() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { name, email } = states;
+    // check if any of the fields are empty
     try {
       if (email.trim().length > 0 && name.trim().length > 0) {
       }
@@ -16,6 +17,7 @@ export default function ForgotPassword() {
       return;
     }
     try {
+      //request to the server
       const { data } = await axiosClient.post("veterinaries/forget-password", { headers: {
         'Access-Control-Allow-Origin': '*',
         'origin':'x-requested-with',

@@ -226,7 +226,7 @@ export default function Form() {
         </div>
         <input
           type="submit"
-          value={states?.pet_id ? "Save changes" : "Create pet"}
+          value={states?.pet_id ? "Save changes" : "Add pet"}
           className="bg-blue-500 hover:cursor-pointer hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
         />
       </form>
