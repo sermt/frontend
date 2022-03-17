@@ -91,6 +91,8 @@ export default function EditProfile() {
                 type="tel"
                 className="border bg-gray-50 w-full p-2 mt-5 rounded-lg"
                 name="tel"
+                placeholder="1234567890"
+                pattern="[0-9]{10}"
                 value={profile.telephone || ""}
                 onChange={(e) =>
                   setProfile((profile) => ({

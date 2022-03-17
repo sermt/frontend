@@ -6,9 +6,9 @@ import { actionCreators } from "../redux";
 export default function Form() {
   // const { createPatient, patient } = usePatients();
 
-  const patient = useSelector(state=>state.patients).patient;
+  const patient = useSelector((state) => state.patients).patient;
   const dispatch = useDispatch();
-  const {createPatient} = bindActionCreators(actionCreators, dispatch);
+  const { createPatient } = bindActionCreators(actionCreators, dispatch);
 
   const [states, setStates] = useState({});
   const [message, setAlert] = useState({
@@ -130,6 +130,7 @@ export default function Form() {
             Pet's Name
           </label>
           <input
+            required
             id="pet_name"
             value={states.pet_name || ""}
             onChange={changeState}
@@ -146,6 +147,7 @@ export default function Form() {
             Owner
           </label>
           <input
+            required
             id="pet_owner"
             type="text"
             value={states.pet_owner || ""}
@@ -163,6 +165,7 @@ export default function Form() {
           </label>
           <input
             id="pet_email"
+            required
             value={states.pet_email || ""}
             onChange={changeState}
             type="email"
@@ -178,11 +181,13 @@ export default function Form() {
             Telephone number
           </label>
           <input
+            required
             id="pet_tel"
             value={states.pet_tel || ""}
             onChange={changeState}
             type="tel"
-            placeholder="Telephone number"
+            placeholder="1234567890"
+            pattern="[0-9]{10}"
             className="border-2 w-full block mt-2 placeholder-grey-500 rounded-md"
           />
         </div>
@@ -194,6 +199,7 @@ export default function Form() {
             Date
           </label>
           <input
+            required
             id="pet_date"
             type="date"
             value={states.pet_date || ""}
@@ -209,6 +215,7 @@ export default function Form() {
             symptoms
           </label>
           <textarea
+            required
             id="pet_symptoms"
             type="text"
             value={states.pet_symptoms || ""}
