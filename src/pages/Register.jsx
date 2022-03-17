@@ -115,6 +115,7 @@ export default function Register() {
               value={states.name || ""}
               onChange={changeState}
               placeholder="Your name"
+              required
             />
           </div>
           <div className="my-5">
@@ -126,7 +127,8 @@ export default function Register() {
               className="border w-full p-3 bg-gray-50 rounded-xl"
               value={states.email || ""}
               name="email"
-              placeholder="Example@example.com"
+              placeholder="Example@myexample.com"
+              required
             />
           </div>
           <div className="my-5">
@@ -141,6 +143,7 @@ export default function Register() {
               value={states.password || ""}
               name="password"
               placeholder="***********"
+              required
             />
           </div>
           <div className="my-5">
@@ -155,6 +158,7 @@ export default function Register() {
               className="border w-full p-3 bg-gray-50 rounded-xl"
               value={states.confirm || ""}
               placeholder="***********"
+              required
             />
           </div>
           <input
@@ -169,13 +173,13 @@ export default function Register() {
             className="block text-center my-5 text-gray-500 hover:cursor-pointer hover:text-blue-800 "
             to="/"
           >
-            Already registered? Sign in
+            Already registered?
           </Link>
           <Link
             className="block text-center my-5 text-gray-500 hover:cursor-pointer hover:text-blue-800"
             to="/forget-Password"
           >
-            Forgot Password? Click here
+            Forgot Password? 
           </Link>
         </nav>
       </div>
