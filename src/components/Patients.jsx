@@ -5,7 +5,6 @@ import { bindActionCreators } from "redux";
 import { actionCreators } from "../redux";
 
 export default function Patients() {
-  // const { patients } = usePatients();
   const statePatient =  useSelector(state=>state);
   
   const [patients, setPatients ] =useState([]);
