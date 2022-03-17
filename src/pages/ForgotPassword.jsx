@@ -4,7 +4,7 @@ import Alert from "../components/Alert";
 import axiosClient from "../config/Axios";
 export default function ForgotPassword() {
   const [states, setStates] = useState({});
-  const [message, setAlert] = useState("Please, fill all the fields");
+  const [message, setAlert] = useState({msg:"Please, fill all the fields",error:false});
   const handleSubmit = async (event) => {
     event.preventDefault();
     const { name, email } = states;
@@ -26,8 +26,10 @@ export default function ForgotPassword() {
       });
      
       setAlert({ msg: data.message, error: false });
+      
     } catch (error) {
       setAlert({ msg: error.response.data.msg, error: true });
+      
     }
     setStates({});
   };
