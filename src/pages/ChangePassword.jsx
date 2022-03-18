@@ -32,6 +32,7 @@ export default function ChangePassword() {
       });
     }
     const result = await updatePassword(passwords);
+    setPasswords({ oldPwd: "", newPwd: "" });
     setAlert(result);
   };
   const changePassword = (event) => {

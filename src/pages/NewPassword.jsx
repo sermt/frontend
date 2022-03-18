@@ -8,6 +8,7 @@ export default function NewPassword() {
   const { token } = params;
   const handleSubmit = async (event) => {
     event.preventDefault();
+    //get new password
     const password = document.getElementById("password").value;
     try {
       if (password.trim().length < 8) {
@@ -17,13 +18,17 @@ export default function NewPassword() {
         });
         return;
       }
+      //request to change password
       await clientAxios.post(`veterinaries/forget-password/${token}`, {
         password,
       });
 
       setAlert({ msg: "New password was successfully changed", error: false });
+      document.getElementById("password").value="";
+      return;
     } catch (error) {
       setAlert({ msg: error.response.data.msg, error: true });
+      document.getElementById("password").value="";
       return;
     }
   };
@@ -31,6 +36,7 @@ export default function NewPassword() {
   useEffect(() => {
     const confirmToken = async () => {
       try {
+        //check if the token exists
         await clientAxios.get(`veterinaries/forget-password/${token}`);
         setAlert({ msg: "Create your new password", error: false });
       } catch (error) {
