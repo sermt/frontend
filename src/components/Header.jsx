@@ -10,12 +10,9 @@ export default function Header() {
   return (
     <header className="py-10 bg-indigo-600">
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between">
-        <Link
-          to="/admin"
-          className="hover:bg-indigo-850 bg-text-white text-sm font-bold hover:cursor-pointer uppercase "
-        >
-          Vet App
-        </Link>
+        
+          <h1 className="text-center text-white text-3xl">Vet App</h1>
+       
 
         <nav className="flex flex-col lg:flex-row items-center justify-between gap-4 mt-5 lg:mt-0">
           <Link
