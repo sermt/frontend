@@ -20,19 +20,19 @@ export default function Header() {
         <nav className="flex flex-col lg:flex-row items-center justify-between gap-4 mt-5 lg:mt-0">
           <Link
             to="/admin"
-            className="hover:bg-indigo-850 bg-text-white text-sm font-black hover:cursor-pointer uppercase "
+            className="hover:bg-indigo-900  bg-text-white text-sm font-black hover:cursor-pointer uppercase "
           >
             Patients
           </Link>
           <Link
             to="/admin/profile"
-            className="hover:bg-indigo-850 text-white text-sm font-black hover:cursor-pointer uppercase"
+            className="hover:bg-indigo-900 text-white text-sm font-black hover:cursor-pointer uppercase"
           >
             Profile
           </Link>
           <button
             type="button"
-            className="hover:bg-indigo-850 text-white  text-sm font-black uppercase hover:cursor-pointer"
+            className="hover:bg-indigo-900 text-white  text-sm font-black uppercase hover:cursor-pointer"
             onClick={logout}
           >
             Log out
