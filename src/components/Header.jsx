@@ -8,20 +8,22 @@ export default function Header() {
   const {logout} =bindActionCreators(actionCreators, dispatch)
 
   return (
-    <header className="py-10 bg-indigo-600">
+    <header className="py-10 bg-indigo-400">
       <div className="container mx-auto flex flex-col lg:flex-row items-center justify-between">
-        <h1 className="font-bold text-2xl text-center text-white ">Welcome back</h1>
-
-        <nav className="flex flex-col lg:flex-row items-center justify-between gap-4 mt-5 lg:mt-0">
-          <Link to="/admin" className="text-white text-sm font-black hover:cursor-pointer uppercase ">
+      <Link to="/admin" className="hover:bg-indigo-700 bg-text-white text-sm font-black hover:cursor-pointer uppercase ">
             Patients
           </Link>
-          <Link to="/admin/profile" className="text-white text-sm font-black hover:cursor-pointer uppercase">
+
+        <nav className="flex flex-col lg:flex-row items-center justify-between gap-4 mt-5 lg:mt-0">
+          <Link to="/admin" className="hover:bg-indigo-700 bg-text-white text-sm font-black hover:cursor-pointer uppercase ">
+            Patients
+          </Link>
+          <Link to="/admin/profile" className="hover:bg-indigo-700 text-white text-sm font-black hover:cursor-pointer uppercase">
             Profile
           </Link>
           <button
             type="button"
-            className="text-white  text-sm font-black uppercase hover:cursor-pointer"
+            className="hover:bg-indigo-700 text-white  text-sm font-black uppercase hover:cursor-pointer"
             onClick={logout}
           >
             Log out
