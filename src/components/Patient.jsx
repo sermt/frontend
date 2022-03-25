@@ -1,8 +1,7 @@
 import React from "react";
-import { useDispatch } from "react-redux";
-import { bindActionCreators } from "redux";
-
 import { actionCreators } from "../redux";
+import { bindActionCreators } from "redux";
+import { useDispatch } from "react-redux";
 
 export default function Patient({ patient }) {
   const { name, owner, email, telephone, date, _id, symptoms } = patient;
@@ -26,9 +25,6 @@ export default function Patient({ patient }) {
     const newDate = new Date(date_[0],date_[1],date_[2]);
     const options = {  year: 'numeric', month: 'long', day: 'numeric' };
     return newDate.toLocaleDateString("en-US", options)
-    // return new Intl.DateTimeFormat("en-US", { dateStyle: "long" }).format(
-    //   newDate
-    // );
   };
   return (
     <div className=" block m-2 p-6  bg-white rounded-lg border border-gray-200 shadow-md hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">

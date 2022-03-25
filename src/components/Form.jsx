@@ -4,7 +4,6 @@ import { bindActionCreators } from "redux";
 import Alert from "../components/Alert";
 import { actionCreators } from "../redux";
 export default function Form() {
-  // const { createPatient, patient } = usePatients();
 
   const patient = useSelector((state) => state.patients).patient;
   const dispatch = useDispatch();
