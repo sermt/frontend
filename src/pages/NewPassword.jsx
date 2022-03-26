@@ -4,7 +4,7 @@ import Alert from "../components/Alert";
 import clientAxios from "../config/Axios";
 export default function NewPassword() {
   const [password, setPassword] = useState("");
-  const [disabled,setDisabled]=useState(false);
+  const [disabled, setDisabled] = useState(false);
   const [message, setAlert] = useState("");
   const params = useParams();
   const { token } = params;
@@ -76,7 +76,7 @@ export default function NewPassword() {
             type="submit"
             value="Save"
             disabled={disabled}
-            className="bg-indigo-200 w-full md:w-auto p-3 rounded-xl uppercase font-bold mt-5 hover:cursor-pointer hover:bg-indigo-800"
+            className="bg-indigo-200 disabled:bg-slate-50  w-full md:w-auto p-3 rounded-xl uppercase font-bold mt-5 hover:cursor-pointer hover:bg-indigo-800"
           />
         </form>
         <nav className="mt-10 lg-flex lg:justify-between">
