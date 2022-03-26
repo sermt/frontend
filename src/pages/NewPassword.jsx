@@ -77,7 +77,7 @@ export default function NewPassword() {
             type="submit"
             value="Save"
             disabled={disabled}
-            className="bg-indigo-200 disabled:bg-slate-50  w-full md:w-auto p-3 rounded-xl uppercase font-bold mt-5 hover:cursor-pointer hover:bg-indigo-800"
+            className="bg-indigo-200 disabled:bg-gray-500  disabled:hover:bg-indigo-800 w-full md:w-auto p-3 rounded-xl uppercase font-bold mt-5 hover:cursor-pointer hover:bg-indigo-800"
           />
         </form>
         <nav className="mt-10 lg-flex lg:justify-between">
