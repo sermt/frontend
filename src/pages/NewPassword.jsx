@@ -3,14 +3,17 @@ import { useParams, Link } from "react-router-dom";
 import Alert from "../components/Alert";
 import clientAxios from "../config/Axios";
 export default function NewPassword() {
+  const [password, setPassword] = useState("");
   const [message, setAlert] = useState("");
   const params = useParams();
   const { token } = params;
+  const changePassword = (e) => setPassword(e.target.value);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
-    //get new password
-    const password = document.getElementById("password").value;
+
     try {
+      //check validations
       if (password.trim().length < 8) {
         setAlert({
           msg: "Password must have at least 8 characters",
@@ -24,11 +27,11 @@ export default function NewPassword() {
       });
 
       setAlert({ msg: "New password was successfully changed", error: false });
-      document.getElementById("password").value="";
+      document.getElementById("password").value = "";
       return;
     } catch (error) {
       setAlert({ msg: error.response.data.msg, error: true });
-      document.getElementById("password").value="";
+      document.getElementById("password").value = "";
       return;
     }
   };
@@ -36,7 +39,7 @@ export default function NewPassword() {
   useEffect(() => {
     const confirmToken = async () => {
       try {
-        //check if the token exists
+        //check if token exists
         await clientAxios.get(`veterinaries/forget-password/${token}`);
         setAlert({ msg: "Create your new password", error: false });
       } catch (error) {
@@ -60,6 +63,8 @@ export default function NewPassword() {
             <input
               id="password"
               type="password"
+              onChange={changePassword}
+              value={password || ""}
               className="border w-full p-3 bg-gray-50 rounded-xl"
               name="password"
               placeholder="***********"
