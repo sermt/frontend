@@ -4,6 +4,7 @@ import Alert from "../components/Alert";
 import clientAxios from "../config/Axios";
 export default function NewPassword() {
   const [password, setPassword] = useState("");
+  const [disabled,setDisabled]=useState(false);
   const [message, setAlert] = useState("");
   const params = useParams();
   const { token } = params;
@@ -27,7 +28,7 @@ export default function NewPassword() {
       });
 
       setAlert({ msg: "New password was successfully changed", error: false });
-      document.getElementById("password").value = "";
+      setDisabled(true);
       return;
     } catch (error) {
       setAlert({ msg: error.response.data.msg, error: true });
@@ -74,6 +75,7 @@ export default function NewPassword() {
           <input
             type="submit"
             value="Save"
+            disabled={disabled}
             className="bg-indigo-200 w-full md:w-auto p-3 rounded-xl uppercase font-bold mt-5 hover:cursor-pointer hover:bg-indigo-800"
           />
         </form>
