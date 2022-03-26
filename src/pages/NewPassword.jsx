@@ -29,6 +29,7 @@ export default function NewPassword() {
 
       setAlert({ msg: "New password was successfully changed", error: false });
       setDisabled(true);
+      setPassword("");
       return;
     } catch (error) {
       setAlert({ msg: error.response.data.msg, error: true });
