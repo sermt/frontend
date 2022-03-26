@@ -32,7 +32,7 @@ export default function NewPassword() {
       return;
     } catch (error) {
       setAlert({ msg: error.response.data.msg, error: true });
-      document.getElementById("password").value = "";
+      setPassword("");
       return;
     }
   };
